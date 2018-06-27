@@ -1,0 +1,249 @@
+
+#PosLogo{
+	position: absolute;
+	top: 25%;
+	left: 35%;
+}
+
+.colpink{
+        color: #fafafa;
+        font-size: 2em;
+       }
+       #fixedl{
+        position: fixed;
+        left: 5px;
+        top: 40%;
+
+       }
+
+ .divsss{
+ 	color: #fafafa;
+ 	background-color:#352408;
+ 	text-align:center;
+ 	padding:50px 80px;
+ 	text-align: justify;
+ }
+
+ .divsss h3{
+ 	text-align:center;
+ }
+
+.divsss p{
+	padding-right: 10%;
+	padding-left: 2%;
+}
+
+.padleftimg{
+	padding-left: 20%;
+}
+
+ #posfixancla{
+ position: fixed;
+ bottom: 5%;
+ left: -0.4%;
+ }
+
+ #DrinkBeerpos{
+ 	padding-top: 10%;
+ 	position: absolute;
+ 	left: 30%;
+ }
+
+#posraschor{
+	position: fixed;
+	right: 0%;
+	top: 0%;
+}
+
+#Wholepos{
+	padding-left: 20%;
+}
+
+#Padleftu{
+  padding-right: 10%;
+}
+
+#posbannercoa{
+  padding-left: 20%;
+}
+
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+height: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+background-color: rgba(204,204,204,0.8);
+}
+.cnt223{
+width: 400px;
+height: 400px;
+margin: 100px auto;
+background: #f3f3f3;
+position: relative;
+z-index: 103;
+/*padding: 15px 35px;
+border-radius: 5px;*/
+box-shadow: 0 2px 5px #000;
+}
+
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 35px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 34px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4, .bgimg-5 {
+  position: relative;
+  opacity: 0.75;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bgimg-1 {
+  background-image: url("../img/img_parallax.jpg");
+  min-height: 100%;
+}
+
+.bgimg-2 {
+  background-image: url("../img/img_parallax2.jpg");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("../img/img_parallax3.jpg");
+  min-height: 400px;
+}
+.bgimg-4 {
+  background-image: url("../img/img_parallax4.jpg");
+  min-height: 400px;
+}
+.bgimg-5 {
+  background-image: url("../img/img_parallax5.jpg");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h2 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 30px "Lato", sans-serif;
+  color: #111;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.8)     ;
+
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #fafafa;
+  text-align: center;
+  padding: 6px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+	text-decoration: none;
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a righta{
+  margin-left: 60%;
+  position: absolute;
+  right: 0%;
+
+}
+
+
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: left;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
