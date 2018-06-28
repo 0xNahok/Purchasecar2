@@ -26,7 +26,6 @@ class ArticleController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'exist' => 'required|integer|',
             'img_route' => 'required|string|max:255',
             'year' => 'required|date|',
             'price' => 'required|numeric',
@@ -41,18 +40,8 @@ class ArticleController extends Controller
      * @return \App\Article
      */
     public function create(array $data)
-    {
-        $article = Article::create([
-            'name' => $data['name'],
-            'exist'=> $data['exist'],
-            'img_route' => $data['img_route'],
-            'year' => $data['year'],
-            'price' => $data['price'],
-            'artist_id' => $data['artist_id'],
-              ]);
-
-        
-        return $article;
+    { 
+       
     }
 
     /**
@@ -61,9 +50,33 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $data)
+    {      $article = new Article();
+         
+          $article->name = $data->get('name');
+          $article->description = $data->get('description');
+          $article->year = $data->get('year');
+          $article->exist = 0;
+          $article->price = $data->get('price');
+          $article->artist_id = $data->get('artist');
+          $article->img_route = $data->get('image');
+          $article->save();
+/*
+            $article = Article::create([
+               
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'exist'=> 0,
+                'img_route' => $data['img_route'],
+                'year' => $data['year'],
+                'price' => $data['price'],
+                'artist_id' => $data['artist'],
+                'img_route' => $data['img']
+                  ]);
+    
+                  */
+            
+            return $data;
     }
 
     /**

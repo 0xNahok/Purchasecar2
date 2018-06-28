@@ -73,4 +73,6 @@ Route::get('/id', function(){
 
 });
 
-Route::resource('store','OrderController');
+Route::resource('order','OrderController');
+
+Route::resource('article','ArticleController');

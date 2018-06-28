@@ -9,7 +9,8 @@
         <center><h2>Orden de Compra</h2>
         <hr></center>
         <br>
-        <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+        <form method="POST" action="{{ route('article.store') }}" aria-label="{{ __('Register') }}">
+            {{ csrf_field() }}
         <div class="row" style="padding-left:5%;">       <h2>Nuevo producto</h2> </div>
    <div class="row" style="padding-left:5%;">
       
@@ -19,13 +20,15 @@
             <div class="form-group">
                     <label> Album </label>
             
-                    <input type="text"  placeholder="Album..." name="album" class="form-control{{ $errors->has('album') ? ' is-invalid' : '' }}"  value="{{ old('album') }}" required >
-                    @if ($errors->has('album'))
+                    <input type="text"  placeholder="Album..." name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  value="{{ old('name') }}" required >
+                    @if ($errors->has('name'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('album') }}</strong>
+                        <strong>{{ $errors->first('name') }}</strong>
                     </span>
                 @endif
             </div>
+            
+        
         </div>
         <div class="col-sm-5 ">
                 <label for="artist ">Artista</label>
@@ -40,38 +43,53 @@
                 <option value="{{$artist->id}}">{{$artist->stagename}}</option>
         @endforeach
                   </select>
+
+                 
             </div>
+            
+            
      </div>
+
+     <div class="row" style="padding-left:5%;">
+      
+      
+        <div class="col-sm-5">
+                
+            <div class="form-group">
+                <label> Descripcion </label>
+        
+                <input type="text"  placeholder="Descripcion..." name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}"  value="{{ old('description') }}" required >
+                @if ($errors->has('description'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('description') }}</strong>
+                </span>
+            @endif
+            
+        </div>
+            
+            </div>
+            <div class="col-sm-5 ">
+                <div class="form-group">
+                    <label> Precio </label>
+            
+                    <input type="number" step="0.01" min="0"  placeholder="Precio..." name="price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}"  value="{{ old('price') }}" required >
+                    @if ($errors->has('price'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('price') }}</strong>
+                    </span>
+                @endif
+                
+            </div>
+                </div>
+                
+                
+         </div>
+
+   
      <div class="row" style="padding-left:5%;">
             <div class="col-sm-4 pb-3">
                     <label for="year">Año</label>
-                    <select class="form-control" id="estado" name="estado">
-          <option disabled="" selected="">Seleciona un Año </option>
-          <option value="2018"> 2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option> 
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-          <option value="2010">2010</option> 
-          <option value="2009">2009</option> 
-          <option value="2008">2008</option>
-          <option value="2007">2007</option>
-          <option value="2006">2006</option>
-          <option value="2005">2005</option>
-          <option value="2004">2004</option>
-          <option value="2003">2003</option>
-          <option value="2002">2002</option> 
-          <option value="2001">2001</option>
-          <option value="2000">2000</option>
-          <option value="90">90's</option>
-          <option value="80">80's</option>
-          <option value="70">70's</option>
-          <option value="60">60's</option>
-          <option value="50">50's</option>
-                      </select>
+                    <input type="date" name="year" id="year">
                 </div>
                 <div class="col-sm-5 ">
                         <label for="genre ">Genero</label>
@@ -91,6 +109,10 @@
      <div class="row" style="padding-left:40%;">
           
          
+        <div class="col-sm-4 pb-3">
+            <label for="image">Portada:</label>
+            <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+        </div>
       
          <div class="col-sm-4 pb-3">
             
@@ -113,7 +135,7 @@
 </div>
    
              
-             <form method="post" action="{{ route('store.store') }}" >
+             <form method="post" action="{{ route('order.store') }}" >
                 {{ csrf_field() }}
                     <div class="row" style="padding-left:5%;"> 
                             <div class="col-sm-4 pb-3">
