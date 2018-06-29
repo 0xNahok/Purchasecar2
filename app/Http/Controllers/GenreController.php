@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
-use App\User;
-use App\Article;
-use Auth;
+use App\Genre;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
 
-class OrderController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,40 +35,34 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = Order::create([
-            'article_id' => $request['article'],
-            'quant'=> $request['quant'],
-              ]);
-              $order->users()->attach(Auth::user()->id);
+        $genre = new Genre();
+         
+        $genre->name = $request->get('name');
+       
+        
+        $genre->save();
 
-              $Articles = Article::where('id',"1")->first();
-
-              $Articles->exist += $request->quant;
-
-              $Articles->save();
-
-              return redirect()->to('admin');
-        //
+        return redirect()->to('admin/admin-add');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
-    {   
-       
+    public function show(Genre $genre)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -81,10 +71,10 @@ class OrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
+     * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Genre $genre)
     {
         //
     }
@@ -92,22 +82,11 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Order  $order
+     * @param  \App\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Genre $genre)
     {
         //
-    }
-
-    public function pdf()
-    {        
-    
-        $order = Order::all(); 
-
-    
-
-        $pdf =  \PDF::loadView('admin/Orderpdf', compact('order'));
-        return $pdf->download('listado.pdf');
     }
 }

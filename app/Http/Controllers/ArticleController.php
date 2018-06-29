@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
-
+use Barryvdh\DomPDF\Facade as PDF;
 class ArticleController extends Controller
 {
     /**
@@ -122,5 +122,15 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    public function pdf()
+    {        
+  
+        $Article = Article::all();
+        //return view('admin/articlepdf', compact('Article'));
+      $pdf =  \PDF::loadView('admin/articlepdf', compact('Article'));
+        return $pdf->download('Inventario.pdf');
+
     }
 }

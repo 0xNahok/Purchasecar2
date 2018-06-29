@@ -76,3 +76,17 @@ Route::get('/id', function(){
 Route::resource('order','OrderController');
 
 Route::resource('article','ArticleController');
+
+Route::resource('artist','ArtistController');
+
+Route::resource('genre','GenreController');
+
+Route::get('download-order', 'OrderController@pdf')->name('order.pdf');
+
+Route::get('download-article', 'ArticleController@pdf')->name('article.pdf');
+
+Route::get('/asd',function ()   
+{
+    return  Auth::user()->roles[0]->nombre;
+});
+

@@ -38,12 +38,15 @@
                             <strong>{{ $errors->first('artist') }}</strong>
                         </span>
                     @endif
+                  
       <option disabled="" selected="">Select a product </option>
         @foreach($Artists as $artist)
                 <option value="{{$artist->id}}">{{$artist->stagename}}</option>
         @endforeach
                   </select>
-
+                  <span> 
+                        <strong> <a href="#" class="" data-toggle="modal" data-target="#artistmodal">No esta en la lista? Agregalo!</a></strong> 
+                    </span>
                  
             </div>
             
@@ -104,6 +107,9 @@
                         <option value="{{$Genre->id}}">{{$Genre->name}}</option>
                 @endforeach
                           </select>
+                          <span> 
+                                <strong> <a href="#" class="" data-toggle="modal" data-target="#genremodal">No esta en la lista? Agregalo!</a></strong> 
+                            </span>
                     </div>
      </div>
      <div class="row" style="padding-left:40%;">
@@ -115,7 +121,7 @@
         </div>
       
          <div class="col-sm-4 pb-3">
-            
+                
          <button class="btn btn-dark" id="sendbtn">Agregar</button>
         </div>
 
@@ -171,4 +177,79 @@
                
              </div>
           
+
+             <div class="modal fade" id='artistmodal'  tabindex="-1" role="dialog" aria-labelledby="artistmodallabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content modalback">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="artistmodallabel ">Add!</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                  
+                         <div class="container">
+                                <div class="row">
+                                        <form action="{{ route('artist.store') }}" method="post" >
+                                                {{ csrf_field() }}
+                                                <label for="firstname">Firstname: </label>
+                                                <input type="text" class="form-control" name="firstname" id="firstname">
+                    
+                                                <label for="lastname">Lastname: </label>
+                                                <input type="text" class="form-control"  name="lastname" id="lastname">
+                    
+                                                <label for="stagename">Stagename: </label>
+                                                <input type="text"  class="form-control" name="stagename" id="stagename">
+
+                                                <input type="submit" value="Agregar">
+                                        </form>
+            
+                                      </div>
+
+                         </div>
+                  
+                    </div>
+                        <div class="modal-footer">
+                          
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal fade" id='genremodal'  tabindex="-1" role="dialog" aria-labelledby="genremodallabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content modalback">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="genremodallabel ">Add!</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                      
+                             <div class="container">
+                                    <div class="row">
+                                            <form action="{{ route('genre.store') }}" method="post" >
+                                                    {{ csrf_field() }}
+                                                    <label for="name">Genero: </label>
+                                                    <input type="text" class="form-control" name="name" id="name">
+
+                                                    <input type="submit" value="Agregar">
+                                            </form>
+                
+                                          </div>
+    
+                             </div>
+                      
+                        </div>
+                            <div class="modal-footer">
+                              
+                      
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
 @endsection
