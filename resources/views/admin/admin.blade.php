@@ -2,7 +2,7 @@
 
 
 
-@if (Auth::User()->hasRole('Admin'))
+
 @section('content')
 <div class="container-fluid p-0">
     <br><br><br>
@@ -31,4 +31,4 @@
 
 
 
-@endif
+

@@ -49,7 +49,12 @@ Route::get('/view', 'cart@view');
 
 Route::get('/admin', function(){
 
-    return view('admin/admin');
+    if(isset(Auth::user()->roles[0]->id) == "1"){
+        return view('admin/admin');
+    } else  
+    $Article =  new App\Article;
+    $Articles = $Article::all();
+    return view('home', ['Articles'=> $Articles]);
 });
 
 
@@ -66,6 +71,20 @@ Route::get('/admin-add', function(){
 
     return view('admin/adminadd',['Articles'=> $Articles, 'Artists'=>$Artists, 'Genres'=>$Genres]);
 });
+
+Route::get('/admin-list', function(){
+    $Article =  new App\Article;
+    $Articles = $Article::all();
+
+    $Artist =  new App\Artist;
+    $Artists = $Artist::all();
+
+    $Genre =  new App\Genre;
+    $Genres = $Genre::all();
+
+    return view('admin/adminlist',['Articles'=> $Articles, 'Artists'=>$Artists, 'Genres'=>$Genres]);
+});
+
 Route::get('/id', function(){
     $Article =  new App\Article;
     $Articles = $Article::where('id',"1")->first();
@@ -86,7 +105,6 @@ Route::get('download-order', 'OrderController@pdf')->name('order.pdf');
 Route::get('download-article', 'ArticleController@pdf')->name('article.pdf');
 
 Route::get('/asd',function ()   
-{
-    return  Auth::user()->roles[0]->nombre;
+{ 
 });
 
