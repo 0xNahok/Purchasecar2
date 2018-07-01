@@ -16,7 +16,7 @@
         </div>	 
 
         <br>
-<div class="container a">
+<div class="container">
         <div class="row">
             @foreach($Articles as $Article)
             <div class="col-md-4">
