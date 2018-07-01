@@ -56,11 +56,14 @@
             <div class= "col-6" >
             <img class="card-img-top" src="{{ asset("img/albums/".$Article->img_route.".png") }}" alt="Card image cap">
        </div>
-            <div class= "col-6" >Name: {{$Article->name}} <br> Price: {{$Article->price}} $
-            
-            <input type="number" name="" id=" ">
-            <button class="btn">Add!</button>     
-            </div>
+       <div class= "col-6" >Name: {{$Article->name}} <br> Price: {{$Article->price}} $ <br> Existencia: {{$Article->exist}}
+       {!! Form::open(['url'=>'/create_purchase']) !!}
+       {!! Form::label('cantidad', 'Cantidad') !!}
+       {!! Form::number('cantidad', '1', ['class'=>'form-control', 'min'=>'1', 'max'=>$Article->exist]) !!}
+       {!! Form::hidden('user_id',Auth::user()->id) !!}
+       {!! Form::hidden('art_id',$Article->id) !!}
+       {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
+       {!! Form::close() !!}
                 
         </div>
 
@@ -72,8 +75,7 @@
     </div>
   </div>
 </div>
-
-        @endforeach
+@endforeach
 
         </div>
 

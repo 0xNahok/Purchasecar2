@@ -14,8 +14,7 @@ use App\User;
 */
 
 Route::get('/', function () {
-$Article =  new App\Article;
-$Articles = $Article::all();
+$Articles =  App\Article::where('exist','>',0)->get();
 return view('home', ['Articles'=> $Articles]);
 });
 
@@ -46,6 +45,7 @@ Route::get('/view', function(){
 
 Route::get('/view', 'cart@view');
 
+Route::post('/create_purchase', 'PurchasesController@create');
 
 Route::get('/admin', function(){
 

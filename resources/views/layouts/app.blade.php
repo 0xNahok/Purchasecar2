@@ -76,6 +76,16 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                @if(session()->has('success'))
+                <div class="alert alert-success alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                   <strong>{{ session()->get('success') }}</strong> Check your <a href="#" class="alert-link">Carrito</a>
+                </div>
+
+                @endif
+            </div>
+                
             @yield('content')
         </main>
     </div>
