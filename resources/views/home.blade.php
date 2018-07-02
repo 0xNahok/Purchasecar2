@@ -15,6 +15,11 @@
         <div class="ws_shadow"></div>
         </div>	 
 
+        <center>
+          <h2>Products</h2>
+            <hr>
+        </center>
+
         <br>
 <div class="container">
         <div class="row">
@@ -41,7 +46,7 @@
     </div>
 
 
-    <div class="modal fade" id='exampleModal{{$Article->id}}'  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id='exampleModal{{$Article->id}}'  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content modalback">
       <div class="modal-header">
@@ -55,12 +60,14 @@
         <div class="row">
             <div class= "col-6" >
             <img class="card-img-top" src="{{ asset("img/albums/".$Article->img_route.".png") }}" alt="Card image cap">
-       </div>
+        </div>
        <div class= "col-6" >Name: {{$Article->name}} <br> Price: {{$Article->price}} $ <br> Existencia: {{$Article->exist}}
        {!! Form::open(['url'=>'/create_purchase']) !!}
        {!! Form::label('cantidad', 'Cantidad') !!}
        {!! Form::number('cantidad', '1', ['class'=>'form-control', 'min'=>'1', 'max'=>$Article->exist]) !!}
+       @if(Auth::check())
        {!! Form::hidden('user_id',Auth::user()->id) !!}
+       @endif
        {!! Form::hidden('art_id',$Article->id) !!}
        {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
        {!! Form::close() !!}
@@ -74,6 +81,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 @endforeach
 

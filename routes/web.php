@@ -18,6 +18,16 @@ $Articles =  App\Article::where('exist','>',0)->get();
 return view('home', ['Articles'=> $Articles]);
 });
 
+/**User related router */
+Route::get('/dashboard','UsersController@index');
+Route::get('/dashboard/cart','UsersController@cart');
+
+/**Cart related routes */
+
+Route::get('dashboard/cart/delete/{user_id}/{art_id}', 'PurchasesController@delete');
+Route::post('/buy', 'PayController@PayDetail');
+
+
 Auth::routes(); 
 Route::get('/sup', function(){
     $User = new App\User;
