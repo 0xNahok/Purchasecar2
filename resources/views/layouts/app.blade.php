@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <a href="dashboard/cart" class="nav-link">Cart</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -58,6 +58,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="/dashboard" class="dropdown-item">Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -67,7 +68,6 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    <a href="/dashboard" class="dropdown-item">Dashboard</a>
                                 </div>
                             </li>
                         @endguest
@@ -81,7 +81,7 @@
                 @if(session()->has('success'))
                 <div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                   <strong>{{ session()->get('success') }}</strong> Check your <a href="#" class="alert-link">Carrito</a>
+                   <strong>{{ session()->get('success') }}</strong> Check your <a href="dashboard/cart" class="alert-link">Carrito</a>
                 </div>
 
                 @else
@@ -102,5 +102,6 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{{ asset('js/cart/delete.js') }}"></script>
+    <script src="{{ asset('js/pay/get-total.js') }}"></script>
 </body>
 </html>

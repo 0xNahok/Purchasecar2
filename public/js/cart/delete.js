@@ -1,20 +1,10 @@
 $(document).ready(()=>{
-    console.log('estoy aqui');
-    $('.delete').click(function(){
-        var val = $(this).attr('val');
-        $.ajax({
-            url:'cart/delete',
-            beforeSend: function(xhr){xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content'));},
-            type:'get',
-            data:{
-                id:val
-            },
-            success:()=>{
-                console.log($(this))
-            },
-            fail:()=>{
-                console.log($(this))
+    $('input[type=checkbox]').on('change', ()=>{
+        if($('input[type=checkbox]:checked').length>0){
+                $('#buy-btn').removeAttr('disabled');
             }
-        });
+        else
+        $('#buy-btn').attr('disabled','');
     });
+    
 });

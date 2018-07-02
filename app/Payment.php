@@ -14,4 +14,8 @@ class Payment extends Model
     public function bill(){
         return $this->hasOne('App\Bill');
     }
+
+    public function articles(){
+        return $this->belongsToMany('App\Article')->withPivot('quant');
+    }
 }

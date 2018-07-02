@@ -14,6 +14,10 @@ class Article extends Model
         return $this->belongsToMany('App\Purchase')->withPivot('quant');
     }
 
+    public function payments(){
+        return $this->belongsToMany('App\Payment')->withPivot('quant');
+    }
+
     public function artist(){
         return $this->belongsTo('App\Artist');
     }

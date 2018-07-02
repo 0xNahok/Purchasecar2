@@ -27,6 +27,10 @@ Route::get('/dashboard/cart','UsersController@cart');
 Route::get('dashboard/cart/delete/{user_id}/{art_id}', 'PurchasesController@delete');
 Route::post('/buy', 'PayController@PayDetail');
 
+/**Payment relaed routes */
+
+Route::post('/pay', 'PayController@Pay');
+
 
 Auth::routes(); 
 Route::get('/sup', function(){

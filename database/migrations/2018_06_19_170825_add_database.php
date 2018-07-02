@@ -92,6 +92,14 @@ class AddDatabase extends Migration
              $table->double('total',3,2);
              $table->timestamps();
          });
+
+         Schema::create('article_payment', function(Blueprint $table){
+            $table->integer('payment_id')->unsigned();
+            $table->foreign('payment_id')->references('id')->on('payments')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->integer('article_id')->unsigned();
+            $table->foreign('article_id')->references('id')->on('articles')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->integer('quant');
+        });
  
          Schema::create('bills', function(Blueprint $table){
              $table->increments('id');

@@ -26,7 +26,7 @@ class UsersController extends Controller
         if(Auth::check()){
             $user = User::find(Auth::user()->id);
             $purchases = $user->purchases;
-            $data = DB::select( DB::raw("select users.id as user_id,purchases.id as id, articles.id as article_id, articles.name as Name, articles.price as Price, SUM(article_purchase.quant) as Cantidad from articles inner join article_purchase on articles.id = article_purchase.article_id inner join purchases on article_purchase.purchase_id = purchases.id and purchases.user_id='$user->id' inner join users on users.id = '$user->id' group by (article_purchase.article_id)") );
+            $data = DB::select( DB::raw("select users.id as user_id,purchases.id as id, articles.id as article_id, articles.name as Name, articles.price as Price, SUM(article_purchase.quant) as Cantidad from articles inner join article_purchase on articles.id = article_purchase.article_id inner join purchases on article_purchase.purchase_id = purchases.id and purchases.user_id='$user->id' and purchases.soft_deleted = false inner join users on users.id = '$user->id' group by (article_purchase.article_id)") );
             
             // $articles = $purchases->articles;
             return view('user.cart', 

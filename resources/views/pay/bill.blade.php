@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 style="text-align:center">Bill Preview</h1>
+<h1 style="text-align:center">Bill </h1>
 <br>
 {!! Form::open(['url'=>'/pay']) !!}
 <table class="table">
@@ -41,7 +41,6 @@
 
 <center>
     <a href="/dashboard/cart" class="btn btn-primary" >Back</a>
-    {!! Form::submit('Pay', ['class'=>'btn btn-primary']) !!}
 </center>
 {!! Form::close() !!}
 @endsection
